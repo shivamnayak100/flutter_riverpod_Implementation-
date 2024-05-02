@@ -31,6 +31,6 @@ class PostModel {
 
   @override
   String toString(){
-    return 'PostModel(id:$id, title: $title, body: $body )';
+    return 'PostModel(userId: $userId, id:$id, title: $title )';
   }
 }
