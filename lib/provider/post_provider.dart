@@ -38,16 +38,18 @@ class PostNotifier extends StateNotifier<PostState>{
      }
     }
   }
+    
 
+    // For adding post 
   // void addPost(String title) {
   //   if (state is PostData) {
   //     final PostData currentState = state as PostData;
-  //     final List<Post> updatedPosts = List.from(currentState.Posts)
-  //       ..add(Post(
-  //         id: currentState.Posts.length + 1,
+  //     final List<PostModel> updatedPosts = List.from(currentState.posts)
+  //       ..add(updatedPosts (
+  //         id: currentState.posts.length + 1,
   //         title: title,
   //         completed: false,
-  //       ));
+  //       ) );
   //     state = PostData(updatedPosts);
   //   }
   // }
