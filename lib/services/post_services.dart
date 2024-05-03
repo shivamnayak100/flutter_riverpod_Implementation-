@@ -27,19 +27,12 @@ class PostServices{
 
 // For Delete list item. 
 
-Future<List<PostModel>> deletePostItem(int id ) async {
+Future<http.Response> deletePostItem(int id ) async {
   try {
-     String url = "https://jsonplaceholder.typicode.com/posts/$id";
+    String url = "https://jsonplaceholder.typicode.com/posts/$id";
     final uri = Uri.parse(url);
     final response = await http.delete(uri);
-
-    if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
-      final List<PostModel> postList = data.map((item) => PostModel.fromJson(item)).toList();
-      return postList;
-    } else {
-      throw "Failed to load posts, status code: ${response.statusCode}";
-    }
+    return response;
   } catch (e) {
     throw "Error occurred while calling API: $e";
   }

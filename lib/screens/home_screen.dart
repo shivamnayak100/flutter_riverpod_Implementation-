@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_with_riverpod/provider/post_provider.dart';
 import 'package:state_with_riverpod/provider/post_state.dart';
@@ -28,15 +27,23 @@ class _HomeScreenState extends State<HomeScreen> {
               child: CircularProgressIndicator(),
             );
           }else if(state is PostData){
-          return Center(
-          child: GestureDetector(
-            onTap: (){
-              // ref.read(postData.notifier).deletePost(PostData());
-            },
-            child: const Text("Hello Riverpod"))
+        return ListView.builder(
+        itemCount: state.posts.length,
+        itemBuilder: (context, index) {
+          final post = state.posts[index];
+          return ListTile(
+            title: Text(post.title),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () async{
+                await ref.read(postsProvider.notifier).deletePost(post.id);
+              },
+            ),
+          );
+        }
         );
           }else{
-            return const Text("Error on UI");
+            return const Center(child:  Text("Error on UI"));
           }
         },
       ),

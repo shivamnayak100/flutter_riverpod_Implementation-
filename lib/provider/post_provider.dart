@@ -26,7 +26,6 @@ class PostNotifier extends StateNotifier<PostState>{
   }
 
   // For delete list item. 
-
     Future<void> deletePost(int postId) async{
     if (state is PostData) {
      try{
@@ -65,7 +64,5 @@ class PostNotifier extends StateNotifier<PostState>{
   //     state = PostData(updatedPosts);
   //   }
   // }
-
-
 
 }
